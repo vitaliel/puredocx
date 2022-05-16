@@ -19,10 +19,13 @@ $ gem 'puredocx'
 You can create **'example.docx'** by creating PureDocx object:
 
 ```sh
-PureDocx.create('../example.docx', paginate_pages: 'right') do |doc|
+PureDocx.create('../example.docx') do |doc|
   doc.header([
     doc.text('header', style: [:italic], size: 28, align: 'left'),
     doc.image('../images/logo.jpg', width: 100, in_header: true)
+  ])
+  doc.footer([
+    doc.text('Footer', style: [:italic], size: 16, align: 'left'),
   ])
 
   doc.content([
@@ -82,7 +85,7 @@ If you want to insert **table2** with options into another table, you should pre
 
   table_options = {
     table_width: 4000,
-    sides_without_border: [:left, :top, :right, :insideH, :insideV],
+    sides_without_border: [:left, :top, :right, :inside_h, :inside_v],
     bold_sides: [:bottom],
     col_width:  [nil, 2852, nil]
   }

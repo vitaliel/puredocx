@@ -24,12 +24,12 @@ module PureDocx
       io.add(file, path)
     end
 
-    def save_document_content(content, header, pagination_position)
-      document_colontitle!(header,              HEADER_TEMPLATE_PATH)
-      document_colontitle!(pagination_position, FOOTER_TEMPLATE_PATH)
+    def save_document_content(content, header, footer)
+      document_colontitle!(header, HEADER_TEMPLATE_PATH)
+      document_colontitle!(footer, FOOTER_TEMPLATE_PATH)
 
       io.get_output_stream(DOCUMENT_TEMPLATE_PATH) do |os|
-        os.write document_content(content, header, pagination_position)
+        os.write document_content(content, header, footer)
       end
     end
 
@@ -64,9 +64,9 @@ module PureDocx
       end
     end
 
-    def document_content(content, header, pagination_position)
+    def document_content(content, header, footer)
       header_reference = colontitle_reference_xml('headerReference', 'header1.xml') unless header.empty?
-      footer_reference = colontitle_reference_xml('footerReference', 'footer1.xml') if pagination_position
+      footer_reference = colontitle_reference_xml('footerReference', 'footer1.xml') unless footer.empty?
 
       File.read(self.class.template_path(DOCUMENT_TEMPLATE_PATH)).tap do |document_content|
         document_content.gsub!('{HEADER}',  header_reference || '')
