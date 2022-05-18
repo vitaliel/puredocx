@@ -12,6 +12,7 @@ module PureDocx
         'footnotes.xml'     => "#{DOCUMENT_RELATIONSHIPS}footnotes",
         'header1.xml'       => "#{DOCUMENT_RELATIONSHIPS}header",
         'footer1.xml'       => "#{DOCUMENT_RELATIONSHIPS}footer",
+        'numbering.xml'     => "#{DOCUMENT_RELATIONSHIPS}numbering",
         'styles.xml'        => "#{DOCUMENT_RELATIONSHIPS}styles",
         'settings.xml'      => "#{DOCUMENT_RELATIONSHIPS}settings",
         'webSettings.xml'   => "#{DOCUMENT_RELATIONSHIPS}webSettings",
